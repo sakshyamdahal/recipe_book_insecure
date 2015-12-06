@@ -9,16 +9,15 @@
 	// Start form processing
 	if ( isset( $_POST['submit'] ) ) {
 		
-		$email = trim( mysql_prep( $_POST['email'] ) );
-		$password = trim( mysql_prep( $_POST['password'] ) );
-		$hashed_password = sha1( $password );
-		
-			$query = "SELECT * FROM user ";
-			$query .= "WHERE email = '{$email}' ";
-			$query .= "AND password = '{$hashed_password}' ";
-			$result_set = mysql_query( $query, $connection );
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+
+		$query = "SELECT * FROM user where BINARY email='".$email."' and BINARY password='".$password."';";
+
+		$result_set = mysql_query( $query);
+
 			//confirm_query( $result_set );
-			if ( mysql_num_rows( $result_set ) == 1 ) {
+			if ( mysql_num_rows( $result_set ) != 0 ) {
 				$found_user = mysql_fetch_array( $result_set );
 				$_SESSION['user_id'] = $found_user['user_id'];
 				$_SESSION['name'] = $found_user['name'];
