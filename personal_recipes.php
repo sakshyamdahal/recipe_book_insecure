@@ -2,10 +2,17 @@
 <?php require_once("includes/connection.php"); ?>
 <?php require_once("includes/functions.php"); ?>
 <?php include("includes/header.php"); ?>
-<?php echo $_SESSION['message']?>
+<?php echo $_SESSION['message'];
+	  $_SESSION['message'] = "";	 
+?>
 
 <?php
 	$user_id = $_SESSION['user_id'];
+
+	if ($_GET['user_id'])
+	{
+		$user_id = $_GET['user_id'];
+	}
 	$query = "SELECT * FROM user_recipe WHERE user_id='$user_id'";
 	$result = mysql_query($query);
 	$num_rows = mysql_num_rows($result);
@@ -37,7 +44,7 @@
 		<div class="container">
 			<div class="heading text-center">
 				<img class="dividerline" src="img/sep.png" alt="">
-				<h2>Saved Recipes</h2>
+				<h2>Your Saved Recipes</h2>
 				<img class="dividerline" src="img/sep.png" alt="">
 			</div>
 			<div id="grid-gallery" class="grid-gallery">

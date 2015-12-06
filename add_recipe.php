@@ -10,6 +10,7 @@
 	if ($token === $csrf) {
 		$query = "INSERT INTO user_recipe (user_id, recipe_id) VALUES ( '{$user_id}', '{$recipe_id}')";
 		if ( mysql_query( $query, $connection ) ) {
+			$_SESSION['message'] = "<div class=\"alert alert-success\" role=\"alert\">Recipe successfully added.</div>";
 			redirect_to( "index.php"); } else {
 				echo "Sorry couldn't process your request. Try again later.";
 			}

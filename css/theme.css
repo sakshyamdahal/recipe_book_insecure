@@ -687,3 +687,10 @@ blockquote cite {
 blockquote cite:before {
 	content: "\2014 \2009";
 }
+
+.alert{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}

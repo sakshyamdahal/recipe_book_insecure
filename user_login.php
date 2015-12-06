@@ -23,7 +23,8 @@
 				$_SESSION['name'] = $found_user['name'];
 				$_SESSION['csrfToken']= base64_encode( openssl_random_pseudo_bytes(32));
 				$_SESSION['message'] = "<div class=\"alert alert-success\" role=\"alert\">Welcome " . $found_user['name'] . " </div>";
-				redirect_to( "index.php" );
+				$user_id = $_SESSION['user_id'];
+				redirect_to( "index.php?user_id=$user_id");
 			} else {
 				$message = "The user information you provided was incorrect.";
 				echo "$message";

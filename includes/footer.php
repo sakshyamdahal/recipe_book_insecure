@@ -36,6 +36,7 @@
 <script src="js/gridscroll.js"></script>
 <script src="js/contact.js"></script>
 <script src="js/common.js"></script>
+<script src="js/script.js"></script>
 
 <script type="text/javascript">
 jQuery(function($) {
