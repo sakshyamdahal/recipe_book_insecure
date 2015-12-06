@@ -4,11 +4,14 @@ require_once( "includes/connection.php" );
 require_once( "includes/functions.php" );
 
 
-$name = mysql_prep( $_POST['name'] );
-$email  = mysql_prep( $_POST['email'] );
-$comment   = mysql_prep( $_POST['comment'] );
-$query = "INSERT INTO feedback (name, email, message) VALUES ( '{$name}', '{$email}', '{$comment}')";
-if ( mysql_query( $query, $connection ) ) {
+$name = $_GET['name'];
+$email  = $_GET['email'];
+$comment   = $_GET['comment'];
+$query = "INSERT INTO feedback (name, email, message) VALUES ('";
+$query .= $name."','";
+$query .= $email."','";
+$query .= $comment."');";
+if ( mysql_query( $query) ) {
 	redirect_to( "feedback.php");
 } else {
 	// Display error message

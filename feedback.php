@@ -32,16 +32,27 @@
 		</div>
 		<div class="row">
 
+		
 		<?php 
 			// displays user feedback
 			for($i = 0; $i < $num_rows; $i++)
 			{
 				$row = mysql_fetch_array($result);
-				$name =  htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8');
-				$message =  htmlspecialchars($row['message'], ENT_QUOTES, 'UTF-8');
-				$email =  htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8');
+				$name =  $row['name'];
+				$message =  $row['message'];
+				$email =  $row['email'];
 
 				echo "<blockquote>$message<cite>$name<br/>$email</cite></blockquote>";
+			}
+
+		?>
+
+		<?php 
+			if ($_GET['feedback'])
+			{
+				$first = $_GET['feedback'];
+				echo "<blockquote>$first</blockquote>";
+				//echo $message;
 			}
 
 		?>
@@ -68,7 +79,7 @@
 				Your message has been sent. Thank you!
 			</div>
 		</div>
-       <form method="post" action="new_feedback.php" id="contactform">
+       <form method="get" action="new_feedback.php" id="contactform">
           <input name="name" type="text" class="contact col-md-6" placeholder="Your Name *" required>
           <input name="email" type="email" class="contact noMarr col-md-6" placeholder="E-mail address *" required>
           <textarea name="comment" class="contact col-md-12" placeholder="Message *" required></textarea>
