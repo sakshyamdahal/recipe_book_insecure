@@ -59,7 +59,7 @@
 									$description =  htmlspecialchars($row['description'], ENT_QUOTES, 'UTF-8');
 									$token = urlencode($_SESSION['csrfToken']);
 									echo "<li><figure><img src=$image_url alt=\"\"/><figcaption><h3>$title</h3><p>$description</p><button class=\"btn\">
-									<a href=add_recipe.php?recipe_id=$recipe_id&token=$token>Add recipe</a></button></figcaption></figure></li>";
+									<a href=add_recipe.php?recipe_id=$recipe_id>Add recipe</a></button></figcaption></figure></li>";
 								}
 
 							?>

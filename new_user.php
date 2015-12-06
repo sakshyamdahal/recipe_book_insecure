@@ -14,7 +14,6 @@
 			$_SESSION['user_id'] = mysql_insert_id();
 			$_SESSION['name'] = $name;
 			$_SESSION['email'] = $email;
-			$_SESSION['csrfToken']= base64_encode( openssl_random_pseudo_bytes(32));
 			$_SESSION['message'] = "<div class=\"alert alert-success\" role=\"alert\">Welcome " . $name . " </div>";
 			redirect_to( "index.php");
 		} else {
